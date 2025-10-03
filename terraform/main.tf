@@ -23,7 +23,7 @@ resource "aws_s3_bucket" "demo" {
     Environment = "Dev"
     Owner       = "Emer"
     Purpose      = "Msc"
-    Module      = "Infra"
+    Modu      = "Infra"
   }
 }
 
@@ -32,6 +32,10 @@ resource "aws_s3_bucket_versioning" "demo_versioning" {
   versioning_configuration {
     status = "Enabled"
   }
+}
+
+resource "aws_iam_user" "demo_user" {
+  name = "demo-user"
 }
 
 resource "aws_iam_user" "demo_user_atl" {
