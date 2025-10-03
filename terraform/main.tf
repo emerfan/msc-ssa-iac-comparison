@@ -18,6 +18,13 @@ resource "random_id" "rand" {
 resource "aws_s3_bucket" "demo" {
   bucket        = "demo-bucket-${random_id.rand.hex}"
   force_destroy = true
+
+  tags = {
+    Environment = "Dev"
+    Owner       = "Emer"
+    Purpose      = "Msc"
+    Modu      = "Infra"
+  }
 }
 
 resource "aws_s3_bucket_versioning" "demo_versioning" {
@@ -28,6 +35,10 @@ resource "aws_s3_bucket_versioning" "demo_versioning" {
 }
 
 resource "aws_iam_user" "demo_user" {
+  name = "demo-user"
+}
+
+resource "aws_iam_user" "demo_user_atl" {
   name = "demo-user"
 }
 
