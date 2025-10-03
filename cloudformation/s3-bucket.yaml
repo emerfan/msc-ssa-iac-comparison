@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "S3 bucket with IAM user and policy"
+
+Resources:
+  DemoBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "demo-bucket-${AWS::AccountId}-${AWS::Region}"
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      Tags:
+        - Key: Environment
+          Value: Dev
+        - Key: Owner
+          Value: Emer
+        - Key: Purpose
+          Value: Msc SSA Demo
+
+  DemoUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: demo-user-cf
+
+  DemoPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: demo-policy
+      Users:
+        - !Ref DemoUser
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action: "s3:*"
+            Resource:
+              - !GetAtt DemoBucket.Arn
+              - !Sub "${DemoBucket.Arn}/*"
+
