@@ -34,7 +34,7 @@ resource "aws_s3_bucket_versioning" "demo_versioning" {
   }
 }
 
-resource "aws_iam_user" "demo_user" {
+resource "aws_iam_user" "demo_user_atl" {
   name = "demo-user"
 }
 
