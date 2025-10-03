@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "random_id" "rand" {
-  byte_length = 4
+  byte_length = 6
 }
 
 resource "aws_s3_bucket" "demo" {
@@ -35,7 +35,7 @@ resource "aws_s3_bucket_versioning" "demo_versioning" {
 }
 
 resource "aws_iam_user" "demo_user" {
-  name = "demo-user_change_3"
+  name = "demo-user_change_4"
 }
 
 resource "aws_iam_user" "demo_user_atl" {
