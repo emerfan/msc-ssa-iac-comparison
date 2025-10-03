@@ -22,6 +22,7 @@ resource "aws_s3_bucket" "demo" {
   tags = {
     Environment = "Dev"
     Owner       = "Emer"
+    Purpose      = "Msc"
   }
 }
 
