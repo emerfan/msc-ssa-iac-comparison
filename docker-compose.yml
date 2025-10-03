@@ -1,0 +1,11 @@
+version: '3'
+services:
+  atlantis:
+    image: runatlantis/atlantis
+    container_name: atlantis
+    ports:
+      - "4141:4141"
+    env_file:
+      - .env
+    volumes:
+      - ./repos.yaml:/etc/atlantis/repos.yaml
