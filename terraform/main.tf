@@ -18,6 +18,11 @@ resource "random_id" "rand" {
 resource "aws_s3_bucket" "demo" {
   bucket        = "demo-bucket-${random_id.rand.hex}"
   force_destroy = true
+
+  tags = {
+    Environment = "Dev"
+    Owner       = "Emer"
+  }
 }
 
 resource "aws_s3_bucket_versioning" "demo_versioning" {
