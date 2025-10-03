@@ -35,11 +35,11 @@ resource "aws_s3_bucket_versioning" "demo_versioning" {
 }
 
 resource "aws_iam_user" "demo_user" {
-  name = "demo-user"
+  name = "demo-user_change_3"
 }
 
 resource "aws_iam_user" "demo_user_atl" {
-  name = "demo-user"
+  name = "demo-user_change"
 }
 
 resource "aws_iam_user_policy" "demo_policy" {
